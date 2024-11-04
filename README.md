@@ -6,3 +6,4 @@ In this particular version of the project I was trying to create a fat jar with 
 
 - using the shade plugin did not work. When running the resulting jar it crashed on the worker factory start (in the worker)
   - `java -cp target/temporalexperiments-1.0.0.jar temporalexperiments.MyWorker`
+  - to create the fat jar - used this pom with the command `mvn clean package shade:shade`

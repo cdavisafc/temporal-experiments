@@ -11,3 +11,4 @@ In this particular version of the project I was trying to create a fat jar with 
   - `java -cp target/temporalexperiments-1.0.0-jar-with-dependencies.jar temporalexperiments.MyWorker`
   - to create the fat jar - used this pom with the command `mvn clean package assembly:single`
   - note that ChatGPT had given me a plugin config which had the `configuration` within the `execution` which was incorrect. I could get it to build but had to use the command `mvn clean package assembly:single@make-assembly`
+- using the spring boot plugin just worked. Note that I also added to the spring boot parent to the pom. Super easy

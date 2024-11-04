@@ -7,3 +7,7 @@ In this particular version of the project I was trying to create a fat jar with 
 - using the shade plugin did not work. When running the resulting jar it crashed on the worker factory start (in the worker)
   - `java -cp target/temporalexperiments-1.0.0.jar temporalexperiments.MyWorker`
   - to create the fat jar - used this pom with the command `mvn clean package shade:shade`
+- using the assembly plugin yielded exactly the same results. When running the resulting jar it crashed on the worker factory start (in the worker)
+  - `java -cp target/temporalexperiments-1.0.0-jar-with-dependencies.jar temporalexperiments.MyWorker`
+  - to create the fat jar - used this pom with the command `mvn clean package assembly:single`
+  - note that ChatGPT had given me a plugin config which had the `configuration` within the `execution` which was incorrect. I could get it to build but had to use the command `mvn clean package assembly:single@make-assembly`

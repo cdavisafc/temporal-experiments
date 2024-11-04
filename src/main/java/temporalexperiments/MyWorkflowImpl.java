@@ -6,6 +6,9 @@ public class MyWorkflowImpl implements MyWorkflow {
 
     @Override
     public ArrayList<Person> getPeople() {
+
+        System.out.println("getPeople() called");
+
         ArrayList<Person> people = new ArrayList<>();
         people.add(new Person("Alice", 30));
         people.add(new Person("Bob", 25));

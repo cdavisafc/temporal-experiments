@@ -95,10 +95,27 @@
   -->
  	<build>
 		<plugins>
+
+      <!-- Maven Compiler plugin -->
+      <plugin>
+        <artifactId>maven-compiler-plugin</artifactId>
+        <version>3.8.0</version>
+      </plugin>
+
+      <!-- Exec Maven plugin -->
+      <plugin>
+        <groupId>org.codehaus.mojo</groupId>
+        <artifactId>exec-maven-plugin</artifactId>
+        <version>3.1.1</version>
+      </plugin>
+
+      <!-- Spring Boot plugin used for creating the fat jar -->
 			<plugin>
 				<groupId>org.springframework.boot</groupId>
 				<artifactId>spring-boot-maven-plugin</artifactId>
 			</plugin>
+
 		</plugins>
+    
 	</build>
 </project>

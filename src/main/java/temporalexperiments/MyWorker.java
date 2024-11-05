@@ -27,6 +27,11 @@ public class MyWorker {
         // Workflows are stateful so a type is needed to create instances.
         worker.registerWorkflowImplementationTypes(MyWorkflowImpl.class);
 
+        // Register Activity implementation(s) with this Worker.
+        // The implementation must be known at runtime to dispatch Activity tasks
+        // Activities are stateless and thread safe so a shared instance is used.
+        worker.registerActivitiesImplementations(new PersonActivityImpl());
+
         System.out.println("Worker is running and actively polling the Task Queue.");
         System.out.println("To quit, use ^C to interrupt...");
 

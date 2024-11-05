@@ -13,6 +13,7 @@ import io.temporal.worker.Worker;
 import temporalexperiments.MyWorkflow;
 import temporalexperiments.MyWorkflowImpl;
 import temporalexperiments.Person;
+import temporalexperiments.PersonActivityImpl;
 import temporalexperiments.Shared;
 
 public class MyWorkflowTest {
@@ -26,6 +27,7 @@ public class MyWorkflowTest {
         testEnv = TestWorkflowEnvironment.newInstance();
         worker = testEnv.newWorker(Shared.TASK_QUEUE);
         worker.registerWorkflowImplementationTypes(MyWorkflowImpl.class);
+        worker.registerActivitiesImplementations(new PersonActivityImpl());
         workflowClient = testEnv.getWorkflowClient();
     }
 

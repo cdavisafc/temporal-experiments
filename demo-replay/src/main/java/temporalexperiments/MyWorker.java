@@ -2,15 +2,27 @@ package temporalexperiments;
 
 import io.temporal.client.WorkflowClient;
 import io.temporal.serviceclient.WorkflowServiceStubs;
+import io.temporal.serviceclient.WorkflowServiceStubsOptions;
 import io.temporal.worker.Worker;
 import io.temporal.worker.WorkerFactory;
+import io.temporal.worker.WorkerOptions;
+import java.time.Duration;
 
 public class MyWorker {
 
     public static void main(String[] args) {
+
         // Create a stub that accesses a Temporal Service on the local development
         // machine
-        WorkflowServiceStubs serviceStub = WorkflowServiceStubs.newLocalServiceStubs();
+        // WorkflowServiceStubs serviceStub =
+        // WorkflowServiceStubs.newLocalServiceStubs();
+
+        // Create a stub that accesses a Temporal Service on the specified host and port
+        String target = "host.docker.internal:7233"; // TODO: Externalize this to config
+        WorkflowServiceStubs serviceStub = WorkflowServiceStubs.newInstance(
+                WorkflowServiceStubsOptions.newBuilder()
+                        .setTarget(target)
+                        .build());
 
         // The Worker uses the Client to communicate with the Temporal Service
         WorkflowClient client = WorkflowClient.newInstance(serviceStub);

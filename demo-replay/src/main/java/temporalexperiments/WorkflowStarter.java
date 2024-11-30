@@ -19,7 +19,7 @@ public class WorkflowStarter {
         // Create a WorkflowOptions instance to configure the Workflow
         WorkflowOptions workflowOptions = WorkflowOptions.newBuilder()
                 .setTaskQueue(Shared.TASK_QUEUE)
-                .setWorkflowId("ephemeral-storage-workflow-" + UUID.randomUUID())
+                .setWorkflowId("relay-demo-workflow-" + UUID.randomUUID())
                 .build();
 
         // Create a Workflow stub

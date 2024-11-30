@@ -1,5 +1,5 @@
 package temporalexperiments;
 
 public interface Shared {
-    static final String TASK_QUEUE = "EPHEMERAL_STORAGE_TASK_QUEUE";
+    static final String TASK_QUEUE = "REPLAY_DEMO_TASK_QUEUE";
 }

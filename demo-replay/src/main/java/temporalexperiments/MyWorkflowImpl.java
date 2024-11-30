@@ -10,7 +10,6 @@ import io.temporal.common.RetryOptions;
 import io.temporal.workflow.Workflow;
 
 public class MyWorkflowImpl implements MyWorkflow {
-    // private static final String PERSON = "GetPerson";
 
     // RetryOptions specify how to automatically handle retries when Activities fail
     private final RetryOptions retryoptions = RetryOptions.newBuilder()
@@ -28,22 +27,6 @@ public class MyWorkflowImpl implements MyWorkflow {
             .setScheduleToCloseTimeout(Duration.ofSeconds(5000)) // Entire duration from scheduling to completion
                                                                  // including queue time
             .build();
-
-    // private final Map<String, ActivityOptions> perActivityMethodOptions = new
-    // HashMap<String, ActivityOptions>() {
-    // {
-    // // A heartbeat time-out is a proof-of life indicator that an activity is
-    // still
-    // // working.
-    // // The 5 second duration used here waits for up to 5 seconds to hear a
-    // // heartbeat.
-    // // If one is not heard, the Activity fails.
-    // // The `withdraw` method is hard-coded to succeed, so this never happens.
-    // // Use heartbeats for long-lived event-driven applications.
-    // put(PERSON,
-    // ActivityOptions.newBuilder().setHeartbeatTimeout(Duration.ofSeconds(5)).build());
-    // }
-    // };
 
     // ActivityStubs enable calls to methods as if the Activity object is local but
     // actually perform an RPC invocation

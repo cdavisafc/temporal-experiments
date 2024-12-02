@@ -5,7 +5,7 @@ import java.util.ArrayList;
 import java.util.HashMap;
 import java.util.Map;
 
-import io.temporal.activity.ActivityOptions;
+import io.temporal.activity.LocalActivityOptions;
 import io.temporal.common.RetryOptions;
 import io.temporal.workflow.Workflow;
 
@@ -21,7 +21,7 @@ public class MyWorkflowImpl implements MyWorkflow {
 
     // ActivityOptions specify the limits on how long an Activity can execute before
     // being interrupted by the Orchestration service
-    private final ActivityOptions defaultActivityOptions = ActivityOptions.newBuilder()
+    private final LocalActivityOptions defaultActivityOptions = LocalActivityOptions.newBuilder()
             .setRetryOptions(retryoptions) // Apply the RetryOptions defined above
             .setStartToCloseTimeout(Duration.ofSeconds(2)) // Max execution time for single Activity
             .setScheduleToCloseTimeout(Duration.ofSeconds(5000)) // Entire duration from scheduling to completion
@@ -30,7 +30,7 @@ public class MyWorkflowImpl implements MyWorkflow {
 
     // ActivityStubs enable calls to methods as if the Activity object is local but
     // actually perform an RPC invocation
-    private final RandomActivity randomActivityStub = Workflow.newActivityStub(RandomActivity.class,
+    private final RandomActivity randomActivityStub = Workflow.newLocalActivityStub(RandomActivity.class,
             defaultActivityOptions, null);
 
     @Override

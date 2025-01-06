@@ -38,7 +38,7 @@ public class MyWorkflowImpl implements MyWorkflow {
     @Override
     public void collectRandomNumbers(boolean longRunning) {
 
-        System.out.println("The workflow has been initiated - collectRandomNumbers called");
+        System.out.println("[WORKFLOW] The workflow has been initiated - collectRandomNumbers called");
 
         numbers = new ArrayList<>();
 
@@ -47,12 +47,12 @@ public class MyWorkflowImpl implements MyWorkflow {
             try {
                 // Launch `makeNumber` Activity
                 numbers.add(randomActivityStub.makeNumber());
-                System.out.printf("numbers: %s\n", numbers);
+                System.out.printf("[WORKFLOW] numbers: %s\n", numbers);
                 Workflow.sleep(10000);
 
             } catch (Exception e) {
                 // If the activity throws an exception, report but continue
-                System.out.printf("create number failed: %s\n", e.getMessage());
+                System.out.printf("[WORKFLOW] create number failed: %s\n", e.getMessage());
                 System.out.flush();
 
             }
@@ -61,7 +61,7 @@ public class MyWorkflowImpl implements MyWorkflow {
         // As written, this loop will run indefinitely and we'll never finish the
         // workflow,
         // though perhaps we'll refactor to allow a signal to stop it
-        System.out.printf("Finishing workflow - numbers: %s\n", numbers);
+        System.out.printf("[WORKFLOW] Finishing workflow - numbers: %s\n", numbers);
         return;
     }
 

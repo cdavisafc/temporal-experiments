@@ -17,12 +17,9 @@ public class MyWorker {
         // WorkflowServiceStubs serviceStub =
         // WorkflowServiceStubs.newLocalServiceStubs();
 
-        // Create a stub that accesses a Temporal Service on the specified host and port
-        String target = "host.docker.internal:7233"; // TODO: Externalize this to config
-        WorkflowServiceStubs serviceStub = WorkflowServiceStubs.newInstance(
-                WorkflowServiceStubsOptions.newBuilder()
-                        .setTarget(target)
-                        .build());
+        // Create a stub that accesses a Temporal Service on the local development
+        // machine
+        WorkflowServiceStubs serviceStub = WorkflowServiceStubs.newLocalServiceStubs();
 
         // The Worker uses the Client to communicate with the Temporal Service
         WorkflowClient client = WorkflowClient.newInstance(serviceStub);
